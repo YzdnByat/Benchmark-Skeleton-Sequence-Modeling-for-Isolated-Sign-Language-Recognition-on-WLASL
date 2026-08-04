@@ -80,8 +80,8 @@ This study utilizes the [WLASL (World Level American Sign Language) Video Datase
 [Predicted Sign Gloss Classification]
 ### Phase 1: Vision Baseline (YOLOv8 + Swin3D-T)
 Raw videos in WLASL vary in camera distance and framing. To prevent self-attention layers from wasting compute on background artifacts, we implement a uniform sampling (T=32 frames) and detection pipeline using **YOLOv8**. The upper-body signer region (`cls=0`) is cropped, clamped, and bilinearly resized to 224 x 224.
+<img width="1989" height="346" alt="download (1)" src="https://github.com/user-attachments/assets/76757733-a728-470b-96ab-b558eec12b0e" />
 
-![YOLO Cropped Frames Sequence](./assets/yolo_cropped_sequence.png)  
 *Figure 1: Sample extracted keyframe sequence (Video ID: 20979) showing signer isolation and background filtering across 32 keyframes.*
 
 The cropped frames feed into a **Video Swin Transformer (Swin3D-T)** initialized with Kinetics-400 pre-trained weights. The final classification head is reprojected to N=2,000 outputs using Xavier Normal initialization and optimized via Automatic Mixed Precision (AMP) and Differential Learning Rates (eta_backbone = 3e-5, eta_head = 3e-4).
