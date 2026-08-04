@@ -1,0 +1,36 @@
+# ==========================================
+# WLASL & Sign Language Project Specifics
+# ==========================================
+
+# Dataset & Data Files (Large files)
+/data/
+*.npy
+*.npz
+*.mp4
+*.avi
+*.json
+!/data/WLASL_v0.3.json    # Keep metadata JSON if needed, ignore raw videos
+
+# Model Checkpoints & Pre-trained Weights
+*.pth
+*.pt
+*.onnx
+*.bin
+*.task                    # MediaPipe task models (pose/hand landmarker)
+/checkpoints/
+/runs/
+/experiments/
+
+# Extracted Frames & Cropped Subjects
+/extracted_frames/
+/extracted_frames_yolo/
+/pruned_landmarks/
+
+# IDE & OS Specifics
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Jupyter / Google Colab Checkpoints
+.ipynb_checkpoints/
