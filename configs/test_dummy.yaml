@@ -1,0 +1,32 @@
+# ==========================================
+# TEST DUMMY CONFIGURATION
+# ==========================================
+project_name: "SignLanguage_Swin3D_Test"
+experiment_name: "dummy_test_run"
+seed: 42
+
+# --- PATHS ---
+extracted_frames_dir: "./dummy_extracted_frames"
+wlasl_json_path: "./dummy_wlasl.json"
+output_dir: "./outputs"
+
+# --- MODEL CONFIG ---
+model_name: "swin3d_t"
+num_classes: 2
+num_frames: 32
+image_size: 224
+
+# --- STRATEGY ---
+training_strategy: "paper_end2end"
+
+paper_config:
+  epochs: 2
+  backbone_lr: 0.0001
+  head_lr: 0.001
+  warmup_epochs: 1
+  weight_decay: 0.01
+
+batch_size: 2
+accumulation_steps: 1
+num_workers: 0       # 0 for safe fast local testing
+label_smoothing: 0.1
